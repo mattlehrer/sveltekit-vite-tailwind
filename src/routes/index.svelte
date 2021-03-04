@@ -1,6 +1,5 @@
 <script>
 	import Counter from '$components/Counter.svelte';
-	import '../style.css';
 </script>
 
 <main class="p-4 mx-auto text-center">
