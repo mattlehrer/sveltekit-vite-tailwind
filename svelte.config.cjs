@@ -1,3 +1,5 @@
+const preprocess = require('svelte-preprocess');
+
 module.exports = {
 	kit: {
 		// By default, `npm run build` will create a standard Node app.
@@ -6,6 +8,7 @@ module.exports = {
 		adapter: '@sveltejs/adapter-node',
 
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
-	}
+		target: '#svelte',
+	},
+	preprocess: preprocess({ postcss: true }),
 };
