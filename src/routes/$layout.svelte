@@ -3,7 +3,7 @@
 	import '../style.css';
 </script>
 
+<Nav />
 <main>
-	<Nav />
 	<slot />
 </main>
