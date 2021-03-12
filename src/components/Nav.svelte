@@ -40,7 +40,11 @@
 			bind:checked={darkMode}
 			on:change={toggleDarkMode}
 		/>
-		<label for="toggle" />
+		<label
+			title="Toggle dark mode"
+			for="toggle"
+			data-dark={darkMode ? '🌒' : '🌞'}
+		/>
 	</div>
 </nav>
 
@@ -50,13 +54,13 @@
 	}
 
 	.toggle label {
-		@apply inline-block cursor-pointer relative transition-all ease-in-out duration-300 w-12 h-6 rounded-3xl border border-solid border-gray-700 bg-yellow-200;
+		@apply inline-block cursor-pointer relative transition-all ease-in-out duration-300 w-12 h-6 rounded-3xl border border-solid border-gray-700 bg-yellow-100;
 	}
 
 	.toggle label::after {
-		content: ' ';
 		/* content: ' '; */
-		@apply inline-block rounded-full cursor-pointer absolute top-px left-px transition-all ease-in-out duration-300 w-5 h-5 bg-gray-700;
+		content: attr(data-dark);
+		@apply flex items-center justify-center rounded-full cursor-pointer absolute top-px left-px transition-all ease-in-out duration-300 w-5 h-5 bg-transparent align-middle;
 	}
 
 	.toggle input[type='checkbox']:checked ~ label {
