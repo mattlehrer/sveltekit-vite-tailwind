@@ -14,9 +14,6 @@
 			console.log({ darkMode });
 			document.documentElement.classList.add('dark');
 		}
-		// else {
-		// 	document.documentElement.classList.remove('dark');
-		// }
 	});
 
 	function toggleDarkMode() {
@@ -53,41 +50,20 @@
 	}
 
 	.toggle label {
-		/* background-color: #777; */
-		/* border: 1px solid #555; */
-		/* border-radius: 25px; */
-		/* cursor: pointer; */
-		/* display: inline-block; */
-		/* position: relative; */
-		/* transition: all ease-in-out 0.3s; */
-		/* width: 50px; */
-		/* height: 25px; */
 		@apply inline-block cursor-pointer relative transition-all ease-in-out duration-300 w-12 h-6 rounded-3xl border border-solid border-gray-700 bg-yellow-200;
 	}
 
 	.toggle label::after {
-		/* background-color: #555; */
-		/* border-radius: 50%; */
 		content: ' ';
-		/* cursor: pointer; */
-		/* display: inline-block; */
-		/* position: absolute; */
-		/* left: 2px; */
-		/* top: 0px; */
-		/* transition: all ease-in-out 0.3s; */
-		/* width: 21px; */
-		/* height: 21px; */
+		/* content: ' '; */
 		@apply inline-block rounded-full cursor-pointer absolute top-px left-px transition-all ease-in-out duration-300 w-5 h-5 bg-gray-700;
 	}
 
 	.toggle input[type='checkbox']:checked ~ label {
-		/* background-color: #00a0fc; */
-		/* border-color: #006dc9; */
 		@apply bg-gray-500;
 	}
 
 	.toggle input[type='checkbox']:checked ~ label::after {
-		/* background-color: #0054b0; */
 		transform: translateX(24px);
 	}
 </style>
