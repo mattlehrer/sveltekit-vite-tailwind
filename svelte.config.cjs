@@ -10,5 +10,10 @@ module.exports = {
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
 	},
-	preprocess: preprocess({ postcss: true }),
+	preprocess: preprocess({
+		postcss: true,
+		defaults: {
+			style: 'postcss',
+		},
+	}),
 };
