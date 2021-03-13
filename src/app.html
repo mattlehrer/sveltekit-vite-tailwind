@@ -7,6 +7,19 @@
 		%svelte.head%
 	</head>
 	<body class="text-gray-900 bg-white dark:bg-gray-900 dark:text-gray-50">
+		<script>
+			(function () {
+				const prefersDarkScheme = window.matchMedia(
+					'(prefers-color-scheme: dark)',
+				);
+
+				if (prefersDarkScheme.matches) {
+					darkMode = true;
+					console.log({ darkMode });
+					document.documentElement.classList.add('dark');
+				}
+			})();
+		</script>
 		<div id="svelte">%svelte.body%</div>
 	</body>
 </html>

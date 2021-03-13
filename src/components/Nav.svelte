@@ -1,36 +1,21 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let darkMode;
 	{
 		(''); // keep something to prevent Vite empty block sourcemap bug
 	}
 
+	let darkMode;
+
 	onMount(() => {
-		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-		if (prefersDarkScheme.matches) {
-			darkMode = true;
-			console.log({ darkMode });
-			document.documentElement.classList.add('dark');
-		}
+		darkMode = document.documentElement.classList.contains('dark');
+		document.body.classList.add('transition', 'ease-in-out', 'duration-500');
 	});
-
-	function toggleDarkMode() {
-		console.log({ darkMode });
-		if (!document) return;
-		if (darkMode) {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-	}
 </script>
 
 <nav class="flex justify-between px-8 my-4 underline dark:text-gray-50">
 	<section class="space-x-6">
-		<a href="/">Home</a>
-		<a href="/about">About</a>
+		<a href="/">Home</a><a href="/about">About</a>
 	</section>
 
 	<div class="toggle">
@@ -38,9 +23,10 @@
 			type="checkbox"
 			id="toggle"
 			bind:checked={darkMode}
-			on:change={toggleDarkMode}
+			on:change={() => document.documentElement.classList.toggle('dark')}
 		/>
 		<label
+			id="darkicon"
 			title="Toggle dark mode"
 			for="toggle"
 			data-dark={darkMode ? '🌒' : '🌞'}
