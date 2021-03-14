@@ -1,37 +1,44 @@
 <script>
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	{
 		(''); // keep something to prevent Vite empty block sourcemap bug
 	}
 
 	let darkMode;
+	let darkModeReady = false;
 
 	onMount(() => {
 		darkMode = document.documentElement.classList.contains('dark');
 		document.body.classList.add('transition', 'ease-in-out', 'duration-500');
+		darkModeReady = true;
 	});
 </script>
 
-<nav class="flex justify-between px-8 my-4 underline dark:text-gray-50">
-	<section class="space-x-6">
+<nav
+	class="flex justify-between items-center px-8 my-4 underline dark:text-gray-50 h-8"
+>
+	<section class="space-x-6 h-8">
 		<a href="/">Home</a><a href="/about">About</a>
 	</section>
 
-	<div class="toggle">
-		<input
-			type="checkbox"
-			id="toggle"
-			bind:checked={darkMode}
-			on:change={() => document.documentElement.classList.toggle('dark')}
-		/>
-		<label
-			id="darkicon"
-			title="Toggle dark mode"
-			for="toggle"
-			data-dark={darkMode ? '🌒' : '🌞'}
-		/>
-	</div>
+	{#if darkModeReady}
+		<div class="toggle h-8" in:fade={{ duration: 800 }}>
+			<input
+				type="checkbox"
+				id="toggle"
+				bind:checked={darkMode}
+				on:change={() => document.documentElement.classList.toggle('dark')}
+			/>
+			<label
+				id="darkicon"
+				title="Toggle dark mode"
+				for="toggle"
+				data-dark={darkMode ? '🌒' : '🌞'}
+			/>
+		</div>
+	{/if}
 </nav>
 
 <style>
