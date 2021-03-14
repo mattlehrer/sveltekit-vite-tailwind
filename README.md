@@ -1,8 +1,5 @@
 # SvelteKit with TailwindCSS Setup
 
-### Note: niklasgrewe on the discord pointed out that @apply rules with pseudoselectors (e.g., hover:text-black or focus:bg-green-500) don't work and crash Vite. These same classes do work if applied directly on an element. I'm trying to setup svelte-preprocess with no luck so far.
-
-<br>
 On 2021-03-02, SvelteKit switched from Snowpack to Vite. I saw someone asking on the Svelte Discord if anyone had gotten TailwindCSS to work with the new `npm init svelte@next` template so I set this up. I only ran into one hiccup on the way.
 
 To recreate yourself as the SvelteKit template changes, here are the steps:
