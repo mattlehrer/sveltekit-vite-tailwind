@@ -7,15 +7,15 @@
 		"start": "svelte-kit start"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-netlify": "^1.0.0-next.3",
+		"@sveltejs/adapter-netlify": "next",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.2.5",
 		"postcss": "^8.2.8",
 		"postcss-load-config": "^3.0.1",
 		"svelte": "^3.35.0",
 		"svelte-preprocess": "^4.6.9",
-		"tailwindcss": "^2.0.3",
-		"vite": "^2.0.5"
+		"tailwindcss": "^2.0.4",
+		"vite": "^2.1.2"
 	},
 	"type": "module",
 	"engines": {
