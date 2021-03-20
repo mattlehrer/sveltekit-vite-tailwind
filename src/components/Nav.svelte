@@ -17,14 +17,14 @@
 </script>
 
 <nav
-	class="flex justify-between items-center px-8 my-4 underline dark:text-gray-50 h-8"
+	class="flex items-center justify-between h-8 px-8 my-4 underline dark:text-gray-50"
 >
-	<section class="space-x-6 h-8">
+	<section class="h-8 space-x-6">
 		<a href="/">Home</a><a href="/about">About</a>
 	</section>
 
 	{#if darkModeReady}
-		<div class="toggle h-8" in:fade={{ duration: 800 }}>
+		<div class="h-8 toggle" in:fade={{ duration: 800 }}>
 			<input
 				type="checkbox"
 				id="toggle"

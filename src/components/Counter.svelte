@@ -8,7 +8,7 @@
 
 <button
 	on:click={increment}
-	class="py-4 px-8 bg-red-300 text-red-900 rounded-full outline-none tabular-nums focus:border-2 focus:border-red-600 active:bg-red-100"
+	class="px-8 py-4 text-red-900 bg-red-300 rounded-full outline-none tabular-nums focus:border-2 focus:border-red-600 active:bg-red-100"
 >
 	Clicks: {count}
 </button>

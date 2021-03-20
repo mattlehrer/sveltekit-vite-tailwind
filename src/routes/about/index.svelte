@@ -5,7 +5,9 @@
 </script>
 
 <div class="mx-8 my-16 sm:mx-32">
-	<h1 class="px-2 -ml-2 text-indigo-600 hover:text-black dark:text-indigo-300">
+	<h1
+		class="px-2 -ml-2 text-3xl text-indigo-600 sm:text-5xl hover:text-black dark:text-indigo-300"
+	>
 		This is the about page.
 	</h1>
 	<p class="mt-8 underline">
@@ -27,9 +29,10 @@
 	</p>
 </div>
 
+<!-- how to use dark mode in @apply; these styles are ugly and I don't recommend them -->
 <style style lang="postcss" global>
 	:local(h1) {
 		width: fit-content;
-		@apply dark:text-indigo-100 text-3xl sm:text-5xl dark:hover:bg-red-800 hover:border-indigo-500 dark:hover:border-yellow-500 border  border-transparent;
+		@apply dark:hover:bg-yellow-900 hover:border-indigo-500 dark:hover:border-yellow-500 border border-transparent dark:text-indigo-100;
 	}
 </style>
