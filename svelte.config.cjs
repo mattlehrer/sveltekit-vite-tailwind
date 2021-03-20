@@ -1,4 +1,6 @@
 const preprocess = require('svelte-preprocess');
+const pkg = require('./package.json');
+const { resolve } = require('path');
 
 module.exports = {
 	kit: {
@@ -9,6 +11,16 @@ module.exports = {
 
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
+		vite: {
+			ssr: {
+				noExternal: Object.keys(pkg.dependencies || {}),
+			},
+			resolve: {
+				alias: {
+					$components: resolve('src/components'),
+				},
+			},
+		},
 	},
 	preprocess: preprocess({
 		postcss: true,
