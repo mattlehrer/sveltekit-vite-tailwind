@@ -41,7 +41,7 @@
 	{/if}
 </nav>
 
-<style>
+<style style lang="postcss">
 	.toggle input[type='checkbox'] {
 		display: none;
 	}
@@ -51,7 +51,6 @@
 	}
 
 	.toggle label::after {
-		/* content: ' '; */
 		content: attr(data-dark);
 		@apply flex items-center justify-center rounded-full cursor-pointer absolute top-px left-px transition-all ease-in-out duration-300 w-5 h-5 bg-transparent align-middle;
 	}

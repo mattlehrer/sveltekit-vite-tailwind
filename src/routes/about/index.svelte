@@ -4,10 +4,8 @@
 	}
 </script>
 
-<div class="mx-8 sm:mx-32 my-16">
-	<h1
-		class="text-3xl text-indigo-600 hover:text-black dark:text-indigo-300 dark:hover:bg-indigo-800 px-2 dark:hover:text-indigo-100 -ml-2"
-	>
+<div class="mx-8 my-16 sm:mx-32">
+	<h1 class="px-2 -ml-2 text-indigo-600 hover:text-black dark:text-indigo-300">
 		This is the about page.
 	</h1>
 	<p class="mt-8 underline">
@@ -15,7 +13,7 @@
 			The code for this SvelteKit starter template is available on GitHub.<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
-				class="h-5 w-5 inline-block ml-2 align-text-bottom"
+				class="inline-block w-5 h-5 ml-2 align-text-bottom"
 				fill="currentColor"
 			>
 				<path
@@ -29,8 +27,9 @@
 	</p>
 </div>
 
-<style lang="postcss">
-	h1 {
+<style style lang="postcss" global>
+	:local(h1) {
 		width: fit-content;
+		@apply dark:text-indigo-100 text-3xl sm:text-5xl dark:hover:bg-red-800 hover:border-indigo-500 dark:hover:border-yellow-500 border  border-transparent;
 	}
 </style>
