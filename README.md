@@ -48,6 +48,8 @@ Add a new [\$layout.svelte file](https://github.com/mattlehrer/sveltekit-vite-ta
 <script>
 	import '../style.css';
 </script>
+
+<slot />
 ```
 
 That should get you going. Suggestions for better setups welcome!
