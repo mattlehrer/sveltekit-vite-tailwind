@@ -8,6 +8,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "next",
+		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.2.5",
 		"postcss": "^8.2.9",
