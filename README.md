@@ -1,8 +1,5 @@
 # SvelteKit with TailwindCSS Setup
 
-### Note: niklasgrewe on the discord pointed out that @apply rules with pseudoselectors (e.g., hover:text-black or focus:bg-green-500) don't work and crash Vite. These same classes do work if applied directly on an element. I'm trying to setup svelte-preprocess with no luck so far.
-
-<br>
 On 2021-03-02, SvelteKit switched from Snowpack to Vite. I saw someone asking on the Svelte Discord if anyone had gotten TailwindCSS to work with the new `npm init svelte@next` template so I set this up. I only ran into one hiccup on the way.
 
 To recreate yourself as the SvelteKit template changes, here are the steps:
@@ -21,18 +18,18 @@ Initialize Tailwind and PostCSS configs
 
 Setup [purge of unused CSS](https://github.com/mattlehrer/sveltekit-vite-tailwind/blob/44e00ba80f23552424589e798a9d8437ac93d0c1/tailwind.config.cjs#L2)
 
-```
+```js
 // tailwind.config.js
 module.exports = {
-	purge: ['src/app.html', 'src/**/*.svelte'],
+  purge: ['src/app.html', 'src/**/*.svelte'],
 ...
 }
 ```
 
 Create a new CSS file with the Tailwind directives. I put it in ./src/style.css but you can organize however.
 
-```
-// ./src/style.css
+```css
+/* ./src/style.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -46,11 +43,13 @@ What does work, is importing the CSS in a `<script>` block on a Svelte component
 
 Add a new [\$layout.svelte file](https://github.com/mattlehrer/sveltekit-vite-tailwind/blob/main/src/routes/%24layout.svelte) at ./src/routes/$layout.svelte
 
-```
-// ./src/routes/$layout.svelte
+```svelte
+<!-- ./src/routes/$layout.svelte -->
 <script>
-	import '../style.css';
+  import '../style.css';
 </script>
+
+<slot />
 ```
 
 That should get you going. Suggestions for better setups welcome!
