@@ -44,7 +44,7 @@ What does work, is importing the CSS in a `<script>` block on a Svelte component
 Add a new [\$layout.svelte file](https://github.com/mattlehrer/sveltekit-vite-tailwind/blob/main/src/routes/%24layout.svelte) at ./src/routes/$layout.svelte
 
 ```
-// ./src/routes/$layout.svelte
+// ./src/routes/__layout.svelte
 <script>
 	import '../style.css';
 </script>
