@@ -16,12 +16,12 @@ Initialize Tailwind and PostCSS configs
 
 `npx tailwindcss init -p`
 
-Setup [purge of unused CSS](https://github.com/mattlehrer/sveltekit-vite-tailwind/blob/44e00ba80f23552424589e798a9d8437ac93d0c1/tailwind.config.cjs#L2)
+Setup the content tailwind should watch for CSS classes:
 
 ```
 // tailwind.config.js
 module.exports = {
-	purge: ['src/app.html', 'src/**/*.svelte'],
+	content: ['src/app.html', 'src/**/*.svelte'],
 ...
 }
 ```
