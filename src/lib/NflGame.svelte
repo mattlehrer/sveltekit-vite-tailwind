@@ -22,7 +22,7 @@
     tma = "https://cdn.usteamcolors.com/images/nfl/cleveland-browns.svg";
     tmna = "CLE";
     tmca =
-      "flex row bg-orange-400 border-b-orange-400 border-l-orange-900 border-r-orange-900 border-t-orange-900 border-8";
+      "flex row bg-orange-300 border-b-orange-300 border-l-orange-900 border-r-orange-900 border-t-orange-900 border-8";
   } else if (game.away == "BUF") {
     tma = "https://cdn.usteamcolors.com/images/nfl/buffalo-bills.svg";
     tmna = "BUF";
@@ -253,7 +253,7 @@
     tmh = "https://cdn.usteamcolors.com/images/nfl/cleveland-browns.svg";
     tmnh = "CLE";
     tmch =
-      "flex row bg-orange-500 border-t-orange-500 border-b-orange-900 border-l-orange-900 border-r-orange-900 border-t-orange-900 border-8";
+      "flex row bg-orange-300 border-t-orange-500 border-b-orange-900 border-l-orange-900 border-r-orange-900 border-t-orange-300 border-8";
   } else if (game.home == "CIN") {
     tmh = "https://cdn.usteamcolors.com/images/nfl/cincinnati-bengals.svg";
     tmnh = "CIN";
