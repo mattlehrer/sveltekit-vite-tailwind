@@ -9,4 +9,3 @@
     <NflGame {game} />
   </div>
 {/each}
-
