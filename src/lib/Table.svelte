@@ -1,5 +1,4 @@
 <script>
-  import Checkbox from "./Checkbox.svelte";
   export let tableData = [
     {
       vitae: "dolorem",
@@ -13,9 +12,6 @@
     },
   ];
 
-  let cell = "";
-  console.log(cell);
-
   let stylehead = "table w-full";
   let stylerow = "bg-green-300";
 
@@ -28,6 +24,8 @@
   } else {
     stylerow = "bg-green-300";
   }
+
+  export let coverage = [];
 </script>
 
 <table class={stylehead}>
@@ -42,7 +40,10 @@
     {#each Object.values(tableData) as row}
       <tr>
         {#each Object.values(row) as cell}
-          <td class={stylerow}><Checkbox bind:checked={cell} id={1}/>{cell}</td>
+          <td class={stylerow}
+            ><input type="checkbox" bind:group={coverage} value={cell} />
+            {cell}</td
+          >
         {/each}
       </tr>
     {/each}
