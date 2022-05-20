@@ -21,6 +21,12 @@
   } else if (Object.keys(tableData[0]) == "AMERICAN HOOPS") {
     stylehead = "table w-full bg-blue-400";
     stylerow = "pl-6 bg-blue-300";
+  } else if (Object.keys(tableData[0]) == "AMERICAN BASEBALL") {
+    stylehead = "table w-full bg-purple-400";
+    stylerow = "pl-6 bg-purple-300";
+  } else if (Object.keys(tableData[0]) == "PRO FOOTBALL - PROPS AND FUTURES") {
+    stylehead = "table w-full bg-orange-400";
+    stylerow = "pl-6 bg-orange-300";
   } else {
     stylerow = "bg-green-300";
   }

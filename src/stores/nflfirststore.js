@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 export const nfl = writable([]);
-
+// YOU WILL NEED TO UPDATE THIS FEED CREATED AS A TEST
 const secretKeyNfl = import.meta.env.VITE_API_NFL;
 
 const fetchNfl = async () => {
