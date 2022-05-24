@@ -11,9 +11,9 @@ const fetchNfl = async () => {
 
     const loadedData = data.map((data, index) => {
         return {
-            isSelected: false,
-            isSelectedAsParly: false,
-            isSelectedAsTease: false,
+            isStraight: false,
+            isParly: false,
+            isTease: false,
             valueHomeSpread: false,
             valueAwaySpread: false,
             valueOver: false,

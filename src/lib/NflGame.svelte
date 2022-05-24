@@ -1,7 +1,12 @@
 <script>
+  import Card from "./Card.svelte";
   import GameRow from "./GameRow.svelte";
   import Checkbox from "./Checkbox.svelte";
+  import { crossfade, fade } from "svelte/transition";
+  import { flip } from "svelte/animate";
   export let game;
+
+  const [send, receive] = crossfade({ fallback: fade });
 
   let tma =
     "https://d2p3bygnnzw9w3.cloudfront.net/req/202204281/tlogo/pfr/NFL.png";
@@ -349,6 +354,8 @@
   let ti = "pt-4 mr-14";
   let sp = "flex row pt-4";
   let ca = "ml-2 mr-2";
+
+  export let selected = [];
 </script>
 
 <GameRow type={tmca}>
@@ -357,10 +364,10 @@
   </div>
   <h1 class={ti} slot="title">{game.away}</h1>
   <h2 class={sp} slot="spread">
-    <Checkbox bind:checked={game.valueAwaySpread} id={game.id}>
+        <Checkbox bind:checked={game.valueAwaySpread} id={game.id}>
       {game.away_spread}
     </Checkbox>
-    <h1 class={ca}>Over</h1>
+
     <Checkbox bind:checked={game.valueOver} id={game.id}>
       {game.over_under}
     </Checkbox>
@@ -393,3 +400,16 @@
 
 <div class="border-stone-900 border-b-8 border-double" />
 <div class="border-stone-900 border-b-8 border-double" />
+
+<Card>
+  <h2 slot="title">{game.away}</h2>
+  <ul slot="content">
+    {#if game.valueAwaySpread === true}
+      <h1>{game.away_spread}</h1>
+    {:else}
+      <h1>Nothing selected...</h1>
+    {/if}
+  </ul>
+</Card>
+
+<p>You have selected: {selected.length ? selected.join(", ") : "nothing"}</p>

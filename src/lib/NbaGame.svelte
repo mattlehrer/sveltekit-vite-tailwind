@@ -49,7 +49,6 @@
   let ti = "pt-4 mr-14";
   let sp = "flex row pt-4";
   let ca = "ml-2 mr-2";
-  console.log(123);
 </script>
 
 <GameRow type={tmca}>

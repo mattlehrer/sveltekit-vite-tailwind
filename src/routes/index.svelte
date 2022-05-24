@@ -4,6 +4,9 @@
   import NflGameList from "$lib/NflGameList.svelte";
   import NflFirstList from "$lib/NflFirstList.svelte";
   import Tabs from "/workspace/sveltekit-vite-tailwind/src/shared/Tabs.svelte";
+  import StraightMenu from "$lib/StraightMenu.svelte";
+  import NflGame from "$lib/NflGame.svelte";
+
   import {
     nflCoverage,
     nbaCoverage,
@@ -12,16 +15,27 @@
   } from "/workspace/sveltekit-vite-tailwind/src/stores/menustore.js";
 
   let coverage = [];
+
   //tabs
   let items = ["Straight", "Parlay", "Teaser"];
   let activeItem = "Straight";
   const tabChange = (e) => {
     activeItem = e.detail;
   };
+
+  let selected = [];
+  
 </script>
 
 <main class="container">
   <Tabs {activeItem} {items} on:tabChange={tabChange} />
+  {#if activeItem === "Straight"}
+    <StraightMenu message={selected} />
+  {:else if activeItem === "Parlay"}
+    <p>Parlay Menu here</p>
+  {:else if activeItem === "Teaser"}
+    <p>Teaser Menu here</p>
+  {/if}
   <div class="flex row">
     <Table tableData={$nflCoverage} bind:coverage />
     <Table tableData={$nbaCoverage} bind:coverage />

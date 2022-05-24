@@ -1,7 +1,11 @@
 <script>
+import GameCheckbox from "./GameCheckbox.svelte";
+import GameRow from "./GameRow.svelte";
+
+
   let id = "checkbox";
   let checked = false;
-  export { id, checked, };
+  export { id, checked };
 </script>
 
 <label class="mr-2">
