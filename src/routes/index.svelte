@@ -5,9 +5,9 @@
   import NflFirstList from "$lib/NflFirstList.svelte";
   import Tabs from "/workspace/sveltekit-vite-tailwind/src/shared/Tabs.svelte";
   import StraightMenu from "$lib/StraightMenu.svelte";
-  import NflGame from "$lib/NflGame.svelte";
 
-  // the goal is to have this updated and used for the kist
+  // the goal is to have this updated and used for the list
+  // I beleive the problem is passing the array twice doesnt work
   let selected = [];
 
   import {
@@ -17,7 +17,7 @@
     nflPropsCoverage,
   } from "/workspace/sveltekit-vite-tailwind/src/stores/menustore.js";
 
-  //use this to prove that it will update real time with this bind
+  //use this to prove that it will update real time with this bind currently using this for testing
   let coverage = [];
 
   //tabs
@@ -31,7 +31,7 @@
 <main class="container">
   <Tabs {activeItem} {items} on:tabChange={tabChange} />
   {#if activeItem === "Straight"}
-    <StraightMenu message={coverage} />
+    <StraightMenu straight_list={coverage} />
   {:else if activeItem === "Parlay"}
     <p>Parlay Menu here</p>
   {:else if activeItem === "Teaser"}

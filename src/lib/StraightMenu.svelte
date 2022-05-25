@@ -1,12 +1,12 @@
 <script>
   let showActive = true;
-  export let message = "default message from StraightMenu";
+  export let straight_list = [];
 </script>
 
 {#if showActive}
-  <div class="backdrop" >
+  <div class="backdrop">
     <div class="active">
-      <p>{message}</p>
+      <p>{straight_list}</p>
     </div>
   </div>
 {/if}

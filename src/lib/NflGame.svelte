@@ -356,6 +356,7 @@
   let ca = "ml-2 mr-4";
 
   export let selected = [];
+
 </script>
 
 <GameRow type={tmca}>
