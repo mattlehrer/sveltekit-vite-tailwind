@@ -7,7 +7,9 @@
   import StraightMenu from "$lib/StraightMenu.svelte";
   import NflGame from "$lib/NflGame.svelte";
 
+  // the goal is to have this updated and used for the kist
   let selected = [];
+
   import {
     nflCoverage,
     nbaCoverage,
@@ -15,6 +17,7 @@
     nflPropsCoverage,
   } from "/workspace/sveltekit-vite-tailwind/src/stores/menustore.js";
 
+  //use this to prove that it will update real time with this bind
   let coverage = [];
 
   //tabs
@@ -28,7 +31,7 @@
 <main class="container">
   <Tabs {activeItem} {items} on:tabChange={tabChange} />
   {#if activeItem === "Straight"}
-    <StraightMenu message={selected} />
+    <StraightMenu message={coverage} />
   {:else if activeItem === "Parlay"}
     <p>Parlay Menu here</p>
   {:else if activeItem === "Teaser"}
