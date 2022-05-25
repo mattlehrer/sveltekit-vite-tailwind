@@ -1,9 +1,9 @@
 <script>
   import Card from "./Card.svelte";
   import GameRow from "./GameRow.svelte";
-  import Checkbox from "./Checkbox.svelte";
   import { crossfade, fade } from "svelte/transition";
   import { flip } from "svelte/animate";
+
   export let game;
 
   const [send, receive] = crossfade({ fallback: fade });
@@ -352,8 +352,8 @@
   }
   let lgo = "ml-4 mr-2";
   let ti = "pt-4 mr-14";
-  let sp = "flex row pt-4";
-  let ca = "ml-2 mr-2";
+  let sp = "flex row pt-8 ml-2";
+  let ca = "ml-2 mr-4";
 
   export let selected = [];
 </script>
@@ -364,17 +364,32 @@
   </div>
   <h1 class={ti} slot="title">{game.away}</h1>
   <h2 class={sp} slot="spread">
-        <Checkbox bind:checked={game.valueAwaySpread} id={game.id}>
-      {game.away_spread}
-    </Checkbox>
-
-    <Checkbox bind:checked={game.valueOver} id={game.id}>
-      {game.over_under}
-    </Checkbox>
+    <input
+      class={ca}
+      type="checkbox"
+      name="awsp"
+      bind:group={selected}
+      value={game.away_spread}
+    />
+    {game.away_spread}
+    <input
+      class={ca}
+      type="checkbox"
+      name="over"
+      bind:group={selected}
+      value={game.over}
+    />
+    {game.over}
+    <h1>Over</h1>
+    <input
+      class={ca}
+      type="checkbox"
+      name="awml"
+      bind:group={selected}
+      value={game.away_money_line}
+    />
+    {game.away_money_line}
     <h1 class={ca}>M/L</h1>
-    <Checkbox bind:checked={game.valueAwayMoneyLine} id={game.id}>
-      {game.away_money_line}
-    </Checkbox>
   </h2>
 </GameRow>
 
@@ -384,32 +399,42 @@
   </div>
   <h1 class={ti} slot="title">{game.home}</h1>
   <h2 class={sp} slot="spread">
-    <Checkbox bind:checked={game.valueHomeSpread} id={game.id}>
-      {game.home_spread}
-    </Checkbox>
-    <h1 class={ca}>Under</h1>
-    <Checkbox bind:checked={game.valueUnder} id={game.id}>
-      {game.over_under}
-    </Checkbox>
+    <input
+      class={ca}
+      type="checkbox"
+      name="hmsp"
+      bind:group={selected}
+      value={game.home_spread}
+    />
+    {game.home_spread}
+    <input
+      class={ca}
+      type="checkbox"
+      name="under"
+      bind:group={selected}
+      value={game.under}
+    />
+    {game.under}
+    <h1>Under</h1>
+    <input
+      class={ca}
+      type="checkbox"
+      name="hmml"
+      bind:group={selected}
+      value={game.home_money_line}
+    />
+    {game.home_money_line}
     <h1 class={ca}>M/L</h1>
-    <Checkbox bind:checked={game.valueHomeMoneyLine} id={game.id}>
-      {game.home_money_line}
-    </Checkbox>
   </h2>
 </GameRow>
 
 <div class="border-stone-900 border-b-8 border-double" />
 <div class="border-stone-900 border-b-8 border-double" />
 
-<Card>
-  <h2 slot="title">{game.away}</h2>
-  <ul slot="content">
-    {#if game.valueAwaySpread === true}
-      <h1>{game.away_spread}</h1>
-    {:else}
-      <h1>Nothing selected...</h1>
-    {/if}
-  </ul>
-</Card>
-
-<p>You have selected: {selected.length ? selected.join(", ") : "nothing"}</p>
+<ul>
+  {#each selected as action}
+    <li>
+      {action}
+    </li>
+  {/each}
+</ul>

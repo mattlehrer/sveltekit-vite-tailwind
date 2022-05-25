@@ -7,6 +7,7 @@
   import StraightMenu from "$lib/StraightMenu.svelte";
   import NflGame from "$lib/NflGame.svelte";
 
+  let selected = [];
   import {
     nflCoverage,
     nbaCoverage,
@@ -22,9 +23,6 @@
   const tabChange = (e) => {
     activeItem = e.detail;
   };
-
-  let selected = [];
-  
 </script>
 
 <main class="container">
@@ -50,7 +48,7 @@
     <ul>
       {#each coverage as action}
         {#if action === "NFL"}
-          <NflGameList />
+          <NflGameList bind:selected />
         {:else if action === "NFL 1st Half"}
           <NflFirstList />
         {:else if action === "NBA"}

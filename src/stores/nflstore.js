@@ -25,7 +25,8 @@ const fetchNfl = async () => {
             home_spread: data.LiveOdds[0].HomePointSpread,
             away_money_line: data.LiveOdds[0].AwayMoneyLine,
             home_money_line: data.LiveOdds[0].HomeMoneyLine,
-            over_under: data.LiveOdds[0].OverUnder,
+            over: Math.abs(data.LiveOdds[0].OverUnder),
+            under: -Math.abs(data.LiveOdds[0].OverUnder),
         };
 
     });
