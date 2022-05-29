@@ -1,8 +1,19 @@
 <script>
-  import Card from "./Card.svelte";
   import GameRow from "./GameRow.svelte";
   import { crossfade, fade } from "svelte/transition";
-  import { flip } from "svelte/animate";
+  import Button from "/workspace/sveltekit-vite-tailwind/src/lib/Button.svelte";
+
+  let n = null;
+  let previousN = n;
+
+  function validator(node, value) {
+    return {
+      update(value) {
+        n = value === null || n < node.min ? previousN : parseInt(value);
+        previousN = (n * 90) / 100;
+      },
+    };
+  }
 
   export let game;
 
@@ -355,8 +366,14 @@
   let sp = "flex row pt-8 ml-2";
   let ca = "ml-2 mr-4";
 
-  export let selected = [];
+  export const aawsp = [];
+  let awsp = [];
 
+  export const over = [];
+  let gmover = [];
+
+  export const hhmsp = [];
+  let hmsp = [];
 </script>
 
 <GameRow type={tmca}>
@@ -369,7 +386,7 @@
       class={ca}
       type="checkbox"
       name="awsp"
-      bind:group={selected}
+      bind:group={awsp}
       value={game.away_spread}
     />
     {game.away_spread}
@@ -377,16 +394,16 @@
       class={ca}
       type="checkbox"
       name="over"
-      bind:group={selected}
+      bind:group={gmover}
       value={game.over}
     />
     {game.over}
-    <h1>Over</h1>
+    <h1 class='ml-1'>Over</h1>
     <input
       class={ca}
       type="checkbox"
       name="awml"
-      bind:group={selected}
+      bind:group={awsp}
       value={game.away_money_line}
     />
     {game.away_money_line}
@@ -404,7 +421,7 @@
       class={ca}
       type="checkbox"
       name="hmsp"
-      bind:group={selected}
+      bind:group={hmsp}
       value={game.home_spread}
     />
     {game.home_spread}
@@ -412,16 +429,16 @@
       class={ca}
       type="checkbox"
       name="under"
-      bind:group={selected}
+      bind:group={hmsp}
       value={game.under}
     />
     {game.under}
-    <h1>Under</h1>
+    <h1 class='ml-1'>Under</h1>
     <input
       class={ca}
       type="checkbox"
       name="hmml"
-      bind:group={selected}
+      bind:group={hmsp}
       value={game.home_money_line}
     />
     {game.home_money_line}
@@ -433,9 +450,81 @@
 <div class="border-stone-900 border-b-8 border-double" />
 
 <ul>
-  {#each selected as action}
-    <li>
-      {action}
+  {#each awsp as aawsp}
+    <li
+      class="flex flex-row mt-2 mb-2"
+      in:receive={{ key: game.away }}
+      out:send={{ key: aawsp }}
+    >
+      <Button type={tmca}>
+        {game.away}
+        {aawsp}
+        Submit
+      </Button>
+      <span class="bg-slate-400 p-3">$</span>
+      <input
+        class="focus:ring-indigo-500 focus:border-indigo-500 block w-24 pl-4 pr-4 sm:text-sm rounded-md mr-4 ring-2 border-y-indigo-500
+      "
+        type="number"
+        use:validator={n}
+        bind:value={n}
+        min="0"
+      />
+      <ul>
+        <li>
+          Risking: {n} on {game.away}
+          {aawsp}
+        </li>
+        <li>To win: {previousN}</li>
+      </ul>
     </li>
   {/each}
 </ul>
+
+<ul>
+  {#each gmover as over}
+    <li>
+      {game.over}
+      {over}
+    </li>
+  {/each}
+</ul>
+
+<ul>
+  {#each hmsp as hhmsp}
+    <li>
+      {game.home}
+      {hhmsp}
+    </li>
+  {/each}
+</ul>
+
+<style>
+  .number-wrapper {
+    position: relative;
+  }
+
+  .number-wrapper:after,
+  .number-wrapper:before {
+    position: absolute;
+    right: 5px;
+    width: 1.6em;
+    height: 0.9em;
+    font-size: 20px;
+    pointer-events: none;
+    background: #fff;
+  }
+
+  .number-wrapper:after {
+    color: blue;
+    content: "\25B2";
+    margin-top: 1px;
+  }
+
+  .number-wrapper:before {
+    color: red;
+    content: "\25BC";
+    margin-bottom: 5px;
+    bottom: -0.5em;
+  }
+</style>

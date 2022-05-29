@@ -8,7 +8,11 @@
 
   // the goal is to have this updated and used for the list
   // I beleive the problem is passing the array twice doesnt work
-  let selected = [];
+  let action = [];
+
+  function handleMessage(event) {
+    alert(event.detail.text);
+  }
 
   import {
     nflCoverage,
@@ -51,7 +55,7 @@
     <ul>
       {#each coverage as action}
         {#if action === "NFL"}
-          <NflGameList bind:selected />
+          <NflGameList bind:action />
         {:else if action === "NFL 1st Half"}
           <NflFirstList />
         {:else if action === "NBA"}
